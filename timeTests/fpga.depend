@@ -34,3 +34,38 @@
 	<unistd.h>
 	<pthread.h>
 
+1667224854 source:/root/Documents/Internship/timeTests/main.c
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<unistd.h>
+	<time.h>
+	<errno.h>
+	<sys/stat.h>
+	<termios.h>
+	<sys/mman.h>
+	<sys/types.h>
+	<fcntl.h>
+	<stdlib.h>
+	<time.h>
+	<stdbool.h>
+	<unistd.h>
+
+1667224854 source:/root/Documents/Internship/timeTests/timeTesting.c
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<unistd.h>
+	<time.h>
+	<errno.h>
+	<sys/stat.h>
+	<termios.h>
+	<sys/mman.h>
+	<sys/types.h>
+	<fcntl.h>
+	<stdlib.h>
+	<time.h>
+	<stdbool.h>
+	<unistd.h>
+	<pthread.h>
+
