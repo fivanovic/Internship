@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1666781774 source:/root/Desktop/FPGATesting/main.c
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<unistd.h>
+	<time.h>
+	<errno.h>
+	<sys/stat.h>
+	<termios.h>
+	<sys/mman.h>
+	<sys/types.h>
+	<fcntl.h>
+	<stdlib.h>
+	<time.h>
+	<stdbool.h>
+	<unistd.h>
+
+1666781777 source:/root/Desktop/FPGATesting/timeTesting.c
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<unistd.h>
+	<time.h>
+	<errno.h>
+	<sys/stat.h>
+	<termios.h>
+	<sys/mman.h>
+	<sys/types.h>
+	<fcntl.h>
+	<stdlib.h>
+	<time.h>
+	<stdbool.h>
+	<unistd.h>
+	<pthread.h>
+
