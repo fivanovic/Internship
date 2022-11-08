@@ -61,7 +61,7 @@ int main ()
     minWrite = 10000.0;
     maxWrite = 0.0;
 
-    int repeats = 1000000;
+    int repeats = 100;
 
     double readTimes[repeats];
     //double wTimes[repeats];
@@ -74,7 +74,7 @@ int main ()
         //pthread_mutex_lock(&mutlock);
         clock_gettime(CLOCK_MONOTONIC,&start);
         //uint16_t first_register = memory[i%(1024*1024/4)];
-        uint16_t first_register = memory[i];
+        uint16_t first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
         //pthread_mutex_unlock(&mutlock);
         //pthread_spin_unlock(&splock);
@@ -112,7 +112,7 @@ int main ()
         //pthread_mutex_lock(&mutlock);
         clock_gettime(CLOCK_MONOTONIC,&start);
         //memory[i%(1024*1024/4)] = first_register + i;
-        memory[i] = first_register + i;
+        memory[1] = first_register + i;
         clock_gettime(CLOCK_MONOTONIC,&end);
         //pthread_mutex_unlock(&mutlock);
         //pthread_spin_unlock(&splock);
