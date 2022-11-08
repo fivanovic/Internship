@@ -18,7 +18,7 @@
 
 #define BILLION  1000000000L;
 
-int main2 ()
+int main ()
 {
     pthread_spinlock_t splock;
     pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
@@ -73,7 +73,8 @@ int main2 ()
         //pthread_spin_lock(&splock);
         //pthread_mutex_lock(&mutlock);
         clock_gettime(CLOCK_MONOTONIC,&start);
-        uint16_t first_register = memory[i%(1024*1024/4)];
+        //uint16_t first_register = memory[i%(1024*1024/4)];
+        uint16_t first_register = memory[i];
         clock_gettime(CLOCK_MONOTONIC,&end);
         //pthread_mutex_unlock(&mutlock);
         //pthread_spin_unlock(&splock);
@@ -110,7 +111,8 @@ int main2 ()
         //pthread_spin_lock(&splock);
         //pthread_mutex_lock(&mutlock);
         clock_gettime(CLOCK_MONOTONIC,&start);
-        memory[i%(1024*1024/4)] = first_register + i;
+        //memory[i%(1024*1024/4)] = first_register + i;
+        memory[i] = first_register + i;
         clock_gettime(CLOCK_MONOTONIC,&end);
         //pthread_mutex_unlock(&mutlock);
         //pthread_spin_unlock(&splock);
