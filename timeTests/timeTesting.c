@@ -27,8 +27,6 @@ int main ()
     pthread_mutex_t mutlock;
     pthread_mutex_init(&mutlock, NULL);
 
-
-
     //pthread_mutex_lock(&mutlock);
 
     FILE * reslist;
@@ -68,7 +66,9 @@ int main ()
 
     for (i=0; i<repeats; i++)
     {
-        struct timespec start,end;
+        struct timespec start,end,waiter;
+        waiter.tv_sec=0;
+        waiter.tv_nsec=10;
 
         //pthread_spin_lock(&splock);
         //pthread_mutex_lock(&mutlock);
@@ -138,16 +138,12 @@ int main ()
 
         writeTimesTotal = writeTimesTotal + timeNanoSec;
         //printf("%d\n", i);
+
+        nanosleep(waiter.tv_sec,waiter.tv_nsec);
+
     }
-    //adding minimum and maximum
-    //if second values are equivalent
+
     //write anomaly investigation program
-    //look into niceness
-    //look into turning off preemption
-    //isolating cpu cores
-    //run directly in terminal
-    //project bin debug for console running
-    //top command for looking at processes
     double avgRead = readTimesTotal/(i+1);
     double avgWrite = writeTimesTotal/(i+1);
 
@@ -170,4 +166,3 @@ int main ()
     return(0);
 
 }
-
