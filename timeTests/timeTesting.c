@@ -66,9 +66,7 @@ int main ()
 
     for (i=0; i<repeats; i++)
     {
-        struct timespec start,end,waiter;
-        waiter.tv_sec=0;
-        waiter.tv_nsec=10;
+        struct timespec start,end;
 
         //pthread_spin_lock(&splock);
         //pthread_mutex_lock(&mutlock);
@@ -139,7 +137,9 @@ int main ()
         writeTimesTotal = writeTimesTotal + timeNanoSec;
         //printf("%d\n", i);
 
-        nanosleep(waiter.tv_sec,waiter.tv_nsec);
+        struct timespec rqtp, rmtp  = {0,500};
+
+        nanosleep(&rqtp,&rmtp);
 
     }
 

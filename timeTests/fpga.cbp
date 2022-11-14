@@ -31,10 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../../../Desktop/FPGATesting/main.c">
+		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="../../../Desktop/FPGATesting/timeTesting.c">
+		<Unit filename="timeTesting.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions />
