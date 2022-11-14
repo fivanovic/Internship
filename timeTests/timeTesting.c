@@ -137,7 +137,7 @@ int main ()
         writeTimesTotal = writeTimesTotal + timeNanoSec;
         //printf("%d\n", i);
 
-        struct timespec rqtp, rmtp  = {0,1000};
+        struct timespec rqtp, rmtp  = {0,500};
 
         nanosleep(&rqtp,&rmtp);
 
