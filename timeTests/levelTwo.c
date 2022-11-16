@@ -54,7 +54,7 @@ int main ()
     int repeats = 1000000;
 
     double readTimes[repeats];
-    double levelTwoRes[];
+    double levelTwoRes[1000];
     levelTwoRes[0] = 0;
     //double wTimes[repeats];
     int j = 1;
@@ -93,7 +93,7 @@ int main ()
 
         readTimesTotal = readTimesTotal + timeNanoSec;
 
-        if(readTimes[i] > 1400 && readTimes[i]) < 2500)
+        if(readTimes[i] > 1400 && readTimes[i] < 2500)
         {
           clock_gettime(CLOCK_MONOTONIC,&levTwo);
           double temp = levTwo.tv_sec + (levTwo.tv_nsec/1000000000);
@@ -155,7 +155,7 @@ int main ()
     fp1=fopen("outputlevTwo.txt","w+");
     for(i=0;i<levTwoReps;i++)
     {
-        fprintf(fp1,"%.4lf\n", levTwoRes[i]);
+        fprintf(fp1,"%.4lf\n", levelTwoRes[i]);
     }
     fclose(fp1);
 
