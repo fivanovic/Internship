@@ -18,16 +18,8 @@
 
 #define BILLION  1000000000L;
 
-int main3 ()
+int main ()
 {
-    pthread_spinlock_t splock;
-    pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
-    //pthread_spin_lock(&splock);
-
-    pthread_mutex_t mutlock;
-    pthread_mutex_init(&mutlock, NULL);
-
-    //pthread_mutex_lock(&mutlock);
 
     FILE * reslist;
 
@@ -62,21 +54,18 @@ int main3 ()
     int repeats = 1000000;
 
     double readTimes[repeats];
+    double levelTwoRes[];
+    levelTwoRes[0] = 0;
     //double wTimes[repeats];
-
+    int j = 1;
     for (i=0; i<repeats; i++)
     {
-        struct timespec start,end;
+        struct timespec start,end,levTwo;
 
-        //pthread_spin_lock(&splock);
-        //pthread_mutex_lock(&mutlock);
         clock_gettime(CLOCK_MONOTONIC,&start);
         //uint16_t first_register = memory[i%(1024*1024/4)];
         uint16_t first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
-        //pthread_mutex_unlock(&mutlock);
-        //pthread_spin_unlock(&splock);
-
 
         double timeNanoSec;
 
@@ -102,18 +91,19 @@ int main3 ()
 
         readTimes[i] = timeNanoSec;
 
-
-
         readTimesTotal = readTimesTotal + timeNanoSec;
 
-        //pthread_spin_lock(&splock);
-        //pthread_mutex_lock(&mutlock);
+        if(readTimes[i] > 1400 && readTimes[i]) < 2500)
+        {
+          clock_gettime(CLOCK_MONOTONIC,&levTwo);
+          double temp = levTwo.tv_sec + (levTwo.tv_nsec/1000000000);
+          levelTwoRes[j] = temp - levelTwoRes[j-1];
+        }
+
         clock_gettime(CLOCK_MONOTONIC,&start);
         //memory[i%(1024*1024/4)] = first_register + i;
         memory[1] = first_register + i;
         clock_gettime(CLOCK_MONOTONIC,&end);
-        //pthread_mutex_unlock(&mutlock);
-        //pthread_spin_unlock(&splock);
 
         if(start.tv_sec == end.tv_sec)
         {
@@ -150,10 +140,6 @@ int main3 ()
     printf( "Min,Mean,Max for read : %.1lf %.1lf %.1lf nanoseconds\n", minRead, avgRead, maxRead );
     printf( "Min,Mean,Max for write : %.1lf %.1lf %.1lf nanoseconds\n", minWrite, avgWrite, maxWrite);
 
-    //pthread_mutex_unlock(&mutlock);
-    pthread_mutex_destroy(&mutlock);
-    //pthread_spin_unlock(&splock);
-    pthread_spin_destroy(&splock);
 
     FILE *fp;
     fp=fopen("output.txt","w+");
@@ -162,6 +148,16 @@ int main3 ()
         fprintf(fp,"%.1lf\n", readTimes[i]);
     }
     fclose(fp);
+
+    int levTwoReps = j;
+
+    FILE *fp1;
+    fp1=fopen("outputlevTwo.txt","w+");
+    for(i=0;i<levTwoReps;i++)
+    {
+        fprintf(fp1,"%.4lf\n", levTwoRes[i]);
+    }
+    fclose(fp1);
 
     return(0);
 
