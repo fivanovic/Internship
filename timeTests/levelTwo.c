@@ -95,7 +95,6 @@ int main ()
 
         if(timeNanoSec > 1400 && timeNanoSec < 2500)
         {
-          printf("PING!");
           clock_gettime(CLOCK_MONOTONIC,&levTwo);
           double temp = levTwo.tv_nsec;
           //+ (levTwo.tv_nsec/1000000000);
