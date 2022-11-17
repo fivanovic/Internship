@@ -51,7 +51,7 @@ int main ()
     minWrite = 10000.0;
     maxWrite = 0.0;
 
-    int repeats = 10000000;
+    int repeats = 1000000;
 
     double readTimes[repeats];
     double levelTwoRes[10000];
