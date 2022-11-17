@@ -96,7 +96,7 @@ int main ()
         if(timeNanoSec > 1400 && timeNanoSec < 2500)
         {
           clock_gettime(CLOCK_MONOTONIC,&levTwo);
-          double temp = levTwo.tv_sec + (levTwo.tv_nsec/1000000000);
+          double temp = levTwo.tv_nsec; //+ (levTwo.tv_nsec/1000000000);
           levelTwoRes[j] = temp - levelTwoRes[j-1];
           j = j+1;
         }
