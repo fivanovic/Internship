@@ -56,6 +56,7 @@ int main ()
     double readTimes[repeats];
     double levelTwoRes[10000];
     levelTwoRes[0] = 0;
+    double levelTwoPrev = 0;
     //double wTimes[repeats];
     int j = 1;
     for (i=0; i<repeats; i++)
@@ -97,16 +98,17 @@ int main ()
         {
           clock_gettime(CLOCK_MONOTONIC,&levTwo);
           double temp = levTwo.tv_nsec; //+ (levTwo.tv_nsec/1000000000);
-          if(levTwo.tv_sec == levTwo.tv_sec)
+          if(levTwo.tv_sec == levelTwoPrev)
           {
               levelTwoRes[j] = temp - levelTwoRes[j-1];
           }
           else
           {
-              levelTwoRes[j] = temp - levelTwoRes[j-1] + 1000000000);
+              levelTwoRes[j] = temp - levelTwoRes[j-1] + 1000000000;
 
           }
           j = j+1;
+          levelTwoPrev = levTwo.tv_sec;
         }
 
         clock_gettime(CLOCK_MONOTONIC,&start);
