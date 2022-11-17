@@ -80,6 +80,20 @@ int main ()
 
         }
 
+        //printf("%.1lf\n", timeNanoSec);
+
+        if (timeNanoSec>maxRead){
+        maxRead = timeNanoSec;
+        }
+
+        if (timeNanoSec<minRead){
+        minRead = timeNanoSec;
+        }
+
+        readTimes[i] = timeNanoSec;
+
+        readTimesTotal = readTimesTotal + timeNanoSec;
+
         if(timeNanoSec > 1400 && timeNanoSec < 2500)
         {
           clock_gettime(CLOCK_MONOTONIC,&levTwo);
@@ -96,22 +110,6 @@ int main ()
           j = j+1;
           levelTwoPrev = levTwo.tv_sec;
         }
-
-        //printf("%.1lf\n", timeNanoSec);
-
-        if (timeNanoSec>maxRead){
-        maxRead = timeNanoSec;
-        }
-
-        if (timeNanoSec<minRead){
-        minRead = timeNanoSec;
-        }
-
-        readTimes[i] = timeNanoSec;
-
-        readTimesTotal = readTimesTotal + timeNanoSec;
-
-
 
         clock_gettime(CLOCK_MONOTONIC,&start);
         //memory[i%(1024*1024/4)] = first_register + i;
