@@ -111,7 +111,7 @@ int main ()
 
         clock_gettime(CLOCK_MONOTONIC,&start);
         //memory[i%(1024*1024/4)] = first_register + i;
-        memory[1] = first_register + i;
+        memory[1] = first_register + 1;
         clock_gettime(CLOCK_MONOTONIC,&end);
 
         if(start.tv_sec == end.tv_sec)
