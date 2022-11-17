@@ -98,14 +98,12 @@ int main ()
         {
           clock_gettime(CLOCK_MONOTONIC,&levTwo);
           double temp = levTwo.tv_nsec; //+ (levTwo.tv_nsec/1000000000);
-          if(levTwo.tv_sec == levelTwoPrev)
-          {
-              levelTwoRes[j] = temp - levelTwoRes[j-1];
-          }
-          else
-          {
-              levelTwoRes[j] = temp - levelTwoRes[j-1]; //+ 1000000000;
 
+          levelTwoRes[j] = temp - levelTwoRes[j-1];
+
+          if(levelTwoRes[j] < 0)
+          {
+            levelTwoRes[j] = levelTwoRes[j] + 1000000000;
           }
           j = j+1;
           levelTwoPrev = levTwo.tv_sec;
