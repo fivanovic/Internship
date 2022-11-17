@@ -104,7 +104,7 @@ int main ()
           }
           else
           {
-              levelTwoRes[j] = temp - levelTwoRes[j-1] + 1000000000;
+              levelTwoRes[j] = temp - levelTwoRes[j-1]; //+ 1000000000;
 
           }
           j = j+1;
