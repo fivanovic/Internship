@@ -138,7 +138,7 @@ int main ()
 
         struct timespec rqtp, rmtp  = {0,500};
 
-        nanosleep(&rqtp,&rmtp);
+        //nanosleep(&rqtp,&rmtp);
 
     }
 
