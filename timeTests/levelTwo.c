@@ -56,7 +56,7 @@ int main ()
     double readTimes[repeats];
     double levelTwoRes[10000];
     levelTwoRes[0] = 0;
-    double levelTwoPrev = 0;
+
     //double wTimes[repeats];
     int j = 1;
     for (i=0; i<repeats; i++)
@@ -106,7 +106,7 @@ int main ()
             levelTwoRes[j] = levelTwoRes[j] + 1000000000;
           }
           j = j+1;
-          levelTwoPrev = levTwo.tv_sec;
+
         }
 
         clock_gettime(CLOCK_MONOTONIC,&start);
@@ -138,7 +138,7 @@ int main ()
 
         struct timespec rqtp, rmtp  = {0,500};
 
-        //nanosleep(&rqtp,&rmtp);
+        nanosleep(&rqtp,&rmtp);
 
     }
 
