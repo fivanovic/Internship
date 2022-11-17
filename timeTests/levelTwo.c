@@ -51,10 +51,10 @@ int main ()
     minWrite = 10000.0;
     maxWrite = 0.0;
 
-    int repeats = 1000000;
+    int repeats = 10000000;
 
     double readTimes[repeats];
-    double levelTwoRes[1000];
+    double levelTwoRes[10000];
     levelTwoRes[0] = 0;
     //double wTimes[repeats];
     int j = 1;
@@ -97,7 +97,15 @@ int main ()
         {
           clock_gettime(CLOCK_MONOTONIC,&levTwo);
           double temp = levTwo.tv_nsec; //+ (levTwo.tv_nsec/1000000000);
-          levelTwoRes[j] = temp - levelTwoRes[j-1];
+          if(levTwo.tv_sec == levTwo.tv_sec)
+          {
+              levelTwoRes[j] = temp - levelTwoRes[j-1];
+          }
+          else
+          {
+              levelTwoRes[j] = temp - levelTwoRes[j-1] + 1000000000);
+
+          }
           j = j+1;
         }
 
