@@ -17,7 +17,7 @@
 
 #define BILLION  1000000000L;
 
-int main2 ()
+int main ()
 {
 
     // sudo lspci -s 01:00.0 -v
@@ -49,13 +49,13 @@ int main2 ()
     int fd = open("/sys/bus/pci/devices/0000:01:00.0/resource0", O_RDWR | O_SYNC);
     void* base_address = (void*)Memloc;
     size_t size = sizeval; // 1MiB
-    void* void_memory = mmap(base_address,
+    uint16_t* void_memory = mmap(base_address,
                          size,
                          PROT_READ | PROT_WRITE,
                          MAP_SHARED,
                          fd,
                          0);
-    uint16_t* memory = (uint16_t*)void_memory;
+    uint16_t* memory = void_memory;
 
     //snapshot here
     struct timespec start,end;
