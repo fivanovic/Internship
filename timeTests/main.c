@@ -55,14 +55,14 @@ int main ()
                          MAP_SHARED,
                          fd,
                          0);
-    uint16_t* memory = (uint16_t*)void_memory;
+    //uint16_t* memory = (uint16_t*)void_memory;
 
     //snapshot here
     struct timespec start,end;
 
     clock_gettime(CLOCK_MONOTONIC,&start);
     // Read the value of the first register
-    uint16_t first_register = memory[1];
+    uint16_t first_register = void_memory[1];
 
     //snapshot here
     clock_gettime(CLOCK_MONOTONIC,&end);
@@ -77,14 +77,14 @@ int main ()
     //another snapshot here with a Write operation
 
     clock_gettime(CLOCK_MONOTONIC,&start);
-    memory[1] = first_register + 1;
+    void_memory[1] = first_register + 1;
     clock_gettime(CLOCK_MONOTONIC,&end);
 
     timeSec = (end.tv_sec - start.tv_sec); //+ (double)(end.tv_nsec - start.tv_nsec)/(double)BILLION;
     timeNanoSec = (end.tv_nsec - start.tv_nsec);
     //printf( "Seconds for Write : %lf\n", timeSec );
     printf( "Nanoseconds for Write : %lf\n", timeNanoSec );
-    uint16_t first_register_update = memory[1];
+    uint16_t first_register_update = void_memory[1];
     printf("first register contains %d \n", first_register_update);
 
     return(0);
