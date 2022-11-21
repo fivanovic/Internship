@@ -49,7 +49,7 @@ int main ()
     int fd = open("/sys/bus/pci/devices/0000:01:00.0/resource0", O_RDWR | O_SYNC);
     void* base_address = (void*)Memloc;
     size_t size = sizeval; // 1MiB
-    void* void_memory = mmap(base_address,
+    uint16_t* void_memory = mmap(base_address,
                          size,
                          PROT_READ | PROT_WRITE,
                          MAP_SHARED,
