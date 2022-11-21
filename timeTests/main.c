@@ -55,7 +55,7 @@ int main ()
                          MAP_SHARED,
                          fd,
                          0);
-    uint16_t* memory = void_memory;
+    uint16_t* memory = (uint16_t*)void_memory;
 
     //snapshot here
     struct timespec start,end;
