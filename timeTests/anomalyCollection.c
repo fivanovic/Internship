@@ -18,17 +18,8 @@
 
 #define BILLION  1000000000L;
 
-int main2 ()
+int main ()
 {
-    //pthread_spinlock_t splock;
-    //pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
-    //pthread_spin_lock(&splock);
-
-    //pthread_mutex_t mutlock;
-    //pthread_mutex_init(&mutlock, NULL);
-
-    //pthread_mutex_lock(&mutlock);
-
     FILE * reslist;
 
     reslist = fopen("/sys/bus/pci/devices/0000:01:00.0/resource", "r");
@@ -59,7 +50,7 @@ int main2 ()
     minWrite = 10000.0;
     maxWrite = 0.0;
 
-    int repeats = 1000000;
+    int repeats = 1000000000;
 
     double readTimes[repeats];
     //double wTimes[repeats];
@@ -68,15 +59,11 @@ int main2 ()
     {
         struct timespec start,end;
 
-        //pthread_spin_lock(&splock);
-        //pthread_mutex_lock(&mutlock);
+
         clock_gettime(CLOCK_MONOTONIC,&start);
         //uint16_t first_register = memory[i%(1024*1024/4)];
         uint16_t first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
-        //pthread_mutex_unlock(&mutlock);
-        //pthread_spin_unlock(&splock);
-
 
         double timeNanoSec;
 
@@ -100,20 +87,16 @@ int main2 ()
         minRead = timeNanoSec;
         }
 
+        if (timeNanoSec>3000){
         readTimes[i] = timeNanoSec;
-
-
+        }
 
         readTimesTotal = readTimesTotal + timeNanoSec;
 
-        //pthread_spin_lock(&splock);
-        //pthread_mutex_lock(&mutlock);
         clock_gettime(CLOCK_MONOTONIC,&start);
         //memory[i%(1024*1024/4)] = first_register + i;
         memory[1] = first_register + i;
         clock_gettime(CLOCK_MONOTONIC,&end);
-        //pthread_mutex_unlock(&mutlock);
-        //pthread_spin_unlock(&splock);
 
         if(start.tv_sec == end.tv_sec)
         {
@@ -132,10 +115,10 @@ int main2 ()
         minWrite = timeNanoSec;
         }
 
-        //writeTimes[i] = timeNanoSec;
+
 
         writeTimesTotal = writeTimesTotal + timeNanoSec;
-        //printf("%d\n", i);
+
 
         struct timespec rqtp, rmtp  = {0,500};
 
@@ -150,13 +133,9 @@ int main2 ()
     printf( "Min,Mean,Max for read : %.1lf %.1lf %.1lf nanoseconds\n", minRead, avgRead, maxRead );
     printf( "Min,Mean,Max for write : %.1lf %.1lf %.1lf nanoseconds\n", minWrite, avgWrite, maxWrite);
 
-    //pthread_mutex_unlock(&mutlock);
-    //pthread_mutex_destroy(&mutlock);
-    //pthread_spin_unlock(&splock);
-    //pthread_spin_destroy(&splock);
 
     FILE *fp;
-    fp=fopen("output.txt","w+");
+    fp=fopen("anomalyOutput.txt","w+");
     for(i=0;i<repeats;i++)
     {
         fprintf(fp,"%.1lf\n", readTimes[i]);
