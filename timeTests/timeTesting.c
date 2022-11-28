@@ -20,12 +20,12 @@
 
 int main ()
 {
-    pthread_spinlock_t splock;
-    pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
+    //pthread_spinlock_t splock;
+    //pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
     //pthread_spin_lock(&splock);
 
-    pthread_mutex_t mutlock;
-    pthread_mutex_init(&mutlock, NULL);
+    //pthread_mutex_t mutlock;
+    //pthread_mutex_init(&mutlock, NULL);
 
     //pthread_mutex_lock(&mutlock);
 
@@ -151,9 +151,9 @@ int main ()
     printf( "Min,Mean,Max for write : %.1lf %.1lf %.1lf nanoseconds\n", minWrite, avgWrite, maxWrite);
 
     //pthread_mutex_unlock(&mutlock);
-    pthread_mutex_destroy(&mutlock);
+    //pthread_mutex_destroy(&mutlock);
     //pthread_spin_unlock(&splock);
-    pthread_spin_destroy(&splock);
+    //pthread_spin_destroy(&splock);
 
     FILE *fp;
     fp=fopen("output.txt","w+");
