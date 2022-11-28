@@ -50,8 +50,8 @@ int main ()
     minWrite = 10000.0;
     maxWrite = 0.0;
 
-    int repeats = 5000000;
-
+    int repeats = 2000000;
+    int j = 0;
     double readTimes[repeats];
     //double wTimes[repeats];
 
@@ -89,6 +89,7 @@ int main ()
 
         if (timeNanoSec>3000){
         readTimes[i] = timeNanoSec;
+        j = j+1;
         }
 
         readTimesTotal = readTimesTotal + timeNanoSec;
@@ -136,7 +137,7 @@ int main ()
 
     FILE *fp;
     fp=fopen("anomalyOutput.txt","w+");
-    for(i=0;i<repeats;i++)
+    for(i=0;i<j;i++)
     {
         fprintf(fp,"%.1lf\n", readTimes[i]);
     }
