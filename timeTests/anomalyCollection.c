@@ -88,7 +88,7 @@ int main ()
         }
 
         if (timeNanoSec>3000){
-        readTimes[i] = timeNanoSec;
+        readTimes[j] = timeNanoSec;
         j = j+1;
         }
 
