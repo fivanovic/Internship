@@ -59,7 +59,7 @@ int main ()
     minWrite = 10000.0;
     maxWrite = 0.0;
 
-    int repeats = 1050000;
+    int repeats = 1000000;
 
     double readTimes[repeats];
     //double wTimes[repeats];
@@ -106,6 +106,11 @@ int main ()
 
         readTimesTotal = readTimesTotal + timeNanoSec;
 
+         struct timespec rqtp, rmtp  = {0,500};
+
+        nanosleep(&rqtp,&rmtp);
+
+
         //pthread_spin_lock(&splock);
         //pthread_mutex_lock(&mutlock);
         clock_gettime(CLOCK_MONOTONIC,&start);
@@ -137,9 +142,6 @@ int main ()
         writeTimesTotal = writeTimesTotal + timeNanoSec;
         //printf("%d\n", i);
 
-        struct timespec rqtp, rmtp  = {0,500};
-
-        //nanosleep(&rqtp,&rmtp);
 
     }
 
