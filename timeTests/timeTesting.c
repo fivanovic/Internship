@@ -18,7 +18,7 @@
 
 #define BILLION  1000000000L;
 
-int main3 ()
+int main ()
 {
     //pthread_spinlock_t splock;
     //pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
@@ -59,7 +59,7 @@ int main3 ()
     minWrite = 10000.0;
     maxWrite = 0.0;
 
-    int repeats = 1000000;
+    int repeats = 1000001;
 
     double readTimes[repeats];
     //double wTimes[repeats];
