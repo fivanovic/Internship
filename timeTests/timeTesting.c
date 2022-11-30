@@ -59,7 +59,7 @@ int main ()
     minWrite = 10000.0;
     maxWrite = 0.0;
 
-    int repeats = 1000100;
+    int repeats = 5000000;
 
     double readTimes[repeats];
     //double wTimes[repeats];
