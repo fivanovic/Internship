@@ -1,4 +1,4 @@
-BINARY     := test_pci_module
+BINARY      := test_pci_module
 KERNEL      := /lib/modules/$(shell uname -r)/build
 ARCH        := x86
 C_FLAGS     := -Wall
