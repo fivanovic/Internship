@@ -14,7 +14,7 @@ $(BINARY)-y := $(OBJECTS)
 
 
 $(BINARY).ko:
-    make -C $(KERNEL) M=$(KMOD_DIR) modules
+    make -C $(KERNEL)   M=$(KMOD_DIR) modules
 
 clean:
     rm -f $(BINARY).ko
