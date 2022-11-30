@@ -12,6 +12,7 @@ obj-m += $(BINARY).o
 
 $(BINARY)-y := $(OBJECTS)
 
+
 $(BINARY).ko:
     make -C $(KERNEL) M=$(KMOD_DIR) modules
 
