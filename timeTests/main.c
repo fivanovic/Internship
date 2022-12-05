@@ -56,8 +56,8 @@ int main ()
                          fd,
                          0);
     //uint16_t* memory = (uint16_t*)void_memory;
-
-    void_memory[3] = uint16_t tester + 1;
+    uint16_t tester = 1;
+    void_memory[3] = tester + 1;
     uint16_t tester2 = void_memory[3];
     printf("this should increment %d \n", tester2);
 
