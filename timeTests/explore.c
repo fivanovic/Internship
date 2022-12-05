@@ -18,7 +18,7 @@
 
 #define BILLION  1000000000L;
 
-int main5748 ()
+int main ()
 {
     FILE * reslist;
 
@@ -60,7 +60,7 @@ int main5748 ()
 
         clock_gettime(CLOCK_MONOTONIC,&start);
         //uint16_t first_register = memory[i%(1024*1024/4)];
-        memory[1,2,3] = first_register + 1;
+        memory[1] = first_register + 1;
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
 
@@ -89,11 +89,11 @@ int main5748 ()
 
 
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
-        /*
-         struct timespec rqtp, rmtp  = {0,500};
+        
+         struct timespec rqtp, rmtp  = {0,5000};
 
         nanosleep(&rqtp,&rmtp);
-        */
+        
 
 
 

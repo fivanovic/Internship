@@ -17,7 +17,7 @@
 
 #define BILLION  1000000000L;
 
-int main ()
+int main548 ()
 {
 
     // sudo lspci -s 01:00.0 -v
