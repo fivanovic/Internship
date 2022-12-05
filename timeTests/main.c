@@ -17,7 +17,7 @@
 
 #define BILLION  1000000000L;
 
-int main557 ()
+int main ()
 {
 
     // sudo lspci -s 01:00.0 -v
@@ -57,8 +57,8 @@ int main557 ()
                          0);
     //uint16_t* memory = (uint16_t*)void_memory;
     uint16_t tester = 1;
-    void_memory[3] = tester + 1;
-    uint16_t tester2 = void_memory[3];
+    void_memory[1,2,3] = tester + 1;
+    uint16_t tester2 = void_memory[2];
     printf("this should increment %d \n", tester2);
 
 
