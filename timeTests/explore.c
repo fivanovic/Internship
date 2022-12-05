@@ -97,7 +97,7 @@ int main ()
         minReadWrite = timeNanoSec;
         }
 
-        usleep(5);
+        //usleep(5);
 
         readWriteTimes[i] = timeNanoSec;
 
