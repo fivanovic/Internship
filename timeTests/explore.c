@@ -18,7 +18,7 @@
 
 #define BILLION  1000000000L;
 
-int main678 ()
+int main ()
 {
     FILE * reslist;
 
@@ -47,7 +47,7 @@ int main678 ()
     double minReadWrite, maxReadWrite;
     minReadWrite = 10000.0;
     maxReadWrite = 0.0;
-    uint16_t first_register = 0;
+    uint16_t first_register,second_register,third_register = 0;
     int repeats = 1000000;
 
     double readWriteTimes[repeats];
@@ -62,6 +62,12 @@ int main678 ()
         //uint16_t first_register = memory[i%(1024*1024/4)];
         memory[1] = first_register + 1;
         first_register = memory[1];
+
+        memory[2] = second_register + 1;
+        second_register = memory[2];
+
+        memory[3] = third_register + 1;
+        third_register = memory[3];
         clock_gettime(CLOCK_MONOTONIC,&end);
 
         double timeNanoSec;
