@@ -60,8 +60,8 @@ int main ()
 
         clock_gettime(CLOCK_MONOTONIC,&start);
         //uint16_t first_register = memory[i%(1024*1024/4)];
-        memory[1:3] = first_register + 1;
-        first_register = memory[1:3];
+        memory[1,2,3] = first_register + 1;
+        first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
 
         double timeNanoSec;
