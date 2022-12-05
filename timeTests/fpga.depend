@@ -86,7 +86,7 @@
 	<stdbool.h>
 	<unistd.h>
 
-1669809214 source:/home/filipivanovic/Documents/Internship/timeTests/timeTesting.c
+1670243175 source:/home/filipivanovic/Documents/Internship/timeTests/timeTesting.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>
@@ -123,6 +123,24 @@
 	<pthread.h>
 
 1669809214 source:/home/filipivanovic/Documents/Internship/timeTests/anomalyCollection.c
+	<stdio.h>
+	<stdint.h>
+	<string.h>
+	<unistd.h>
+	<time.h>
+	<errno.h>
+	<sys/stat.h>
+	<termios.h>
+	<sys/mman.h>
+	<sys/types.h>
+	<fcntl.h>
+	<stdlib.h>
+	<time.h>
+	<stdbool.h>
+	<unistd.h>
+	<pthread.h>
+
+1670243508 source:/home/filipivanovic/Documents/Internship/timeTests/explore.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>

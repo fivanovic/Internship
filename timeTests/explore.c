@@ -42,28 +42,26 @@ int main ()
                          fd,
                          0);
     uint16_t* memory = (uint16_t*)void_memory;
-    double readTimesTotal, writeTimesTotal;
+    double readWriteTimesTotal;
     int i;
-    double minRead, maxRead, minWrite, maxWrite;
-    minRead = 10000.0;
-    maxRead = 0.0;
-    minWrite = 10000.0;
-    maxWrite = 0.0;
-
+    double minReadWrite, maxReadWrite;
+    minReadWrite = 10000.0;
+    maxReadWrite = 0.0;
+    uint16_t first_register = 0;
     int repeats = 1000000;
 
-    double readTimes[repeats];
+    double readWriteTimes[repeats];
     //double wTimes[repeats];
 
     for (i=0; i<repeats; i++)
     {
         struct timespec start,end;
 
-        
+
         clock_gettime(CLOCK_MONOTONIC,&start);
         //uint16_t first_register = memory[i%(1024*1024/4)];
         memory[1] = first_register + 1;
-        uint16_t first_register = memory[1];
+        first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
 
         double timeNanoSec;
@@ -77,42 +75,42 @@ int main ()
             timeNanoSec = (end.tv_nsec - start.tv_nsec + 1000000000);
 
         }
-        
-        if (timeNanoSec>maxRead){
-        maxRead = timeNanoSec;
+
+        if (timeNanoSec>maxReadWrite){
+        maxReadWrite = timeNanoSec;
         }
 
-        if (timeNanoSec<minRead){
-        minRead = timeNanoSec;
+        if (timeNanoSec<minReadWrite){
+        minReadWrite = timeNanoSec;
         }
 
-        readTimes[i] = timeNanoSec;
+        readWriteTimes[i] = timeNanoSec;
 
 
+
+        readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
         /*
-        readTimesTotal = readTimesTotal + timeNanoSec;
-
          struct timespec rqtp, rmtp  = {0,500};
 
         nanosleep(&rqtp,&rmtp);
         */
 
-     
+
 
 
     }
 
-    double avgRead = readTimesTotal/(i+1);
+    double avgReadWrite = readWriteTimesTotal/(i+1);
 
 
-    printf( "Min,Mean,Max for read : %.1lf %.1lf %.1lf nanoseconds\n", minRead, avgRead, maxRead );
-    
-   
+    printf( "Min,Mean,Max for write -> read : %.1lf %.1lf %.1lf nanoseconds\n", minReadWrite, avgReadWrite, maxReadWrite );
+
+
     FILE *fp;
     fp=fopen("output.txt","w+");
     for(i=0;i<repeats;i++)
     {
-        fprintf(fp,"%.1lf\n", readTimes[i]);
+        fprintf(fp,"%.1lf\n", readWriteTimes[i]);
     }
     fclose(fp);
 
