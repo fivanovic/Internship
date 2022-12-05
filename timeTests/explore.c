@@ -89,11 +89,11 @@ int main ()
 
 
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
-        
-         struct timespec rqtp, rmtp  = {0,5000};
+
+        struct timespec rqtp, rmtp  = {0,10000};
 
         nanosleep(&rqtp,&rmtp);
-        
+
 
 
 
