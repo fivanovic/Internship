@@ -84,17 +84,18 @@ int main ()
         minReadWrite = timeNanoSec;
         }
 
+        usleep(5);
+
         readWriteTimes[i] = timeNanoSec;
-
-
 
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
 
+        /*
         struct timespec rqtp, rmtp  = {0,10000};
 
         nanosleep(&rqtp,&rmtp);
 
-
+        */
 
 
 
