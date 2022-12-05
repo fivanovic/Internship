@@ -18,17 +18,8 @@
 
 #define BILLION  1000000000L;
 
-int main12 ()
+int main ()
 {
-    //pthread_spinlock_t splock;
-    //pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
-    //pthread_spin_lock(&splock);
-
-    //pthread_mutex_t mutlock;
-    //pthread_mutex_init(&mutlock, NULL);
-
-    //pthread_mutex_lock(&mutlock);
-
     FILE * reslist;
 
     reslist = fopen("/sys/bus/pci/devices/0000:01:00.0/resource", "r");
@@ -68,15 +59,12 @@ int main12 ()
     {
         struct timespec start,end;
 
-        //pthread_spin_lock(&splock);
-        //pthread_mutex_lock(&mutlock);
+        
         clock_gettime(CLOCK_MONOTONIC,&start);
         //uint16_t first_register = memory[i%(1024*1024/4)];
+        memory[1] = first_register + 1;
         uint16_t first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
-        //pthread_mutex_unlock(&mutlock);
-        //pthread_spin_unlock(&splock);
-
 
         double timeNanoSec;
 
@@ -89,9 +77,7 @@ int main12 ()
             timeNanoSec = (end.tv_nsec - start.tv_nsec + 1000000000);
 
         }
-
-        //printf("%.1lf\n", timeNanoSec);
-
+        
         if (timeNanoSec>maxRead){
         maxRead = timeNanoSec;
         }
@@ -103,60 +89,25 @@ int main12 ()
         readTimes[i] = timeNanoSec;
 
 
-
+        /*
         readTimesTotal = readTimesTotal + timeNanoSec;
 
          struct timespec rqtp, rmtp  = {0,500};
 
         nanosleep(&rqtp,&rmtp);
+        */
 
-
-        //pthread_spin_lock(&splock);
-        //pthread_mutex_lock(&mutlock);
-        clock_gettime(CLOCK_MONOTONIC,&start);
-        //memory[i%(1024*1024/4)] = first_register + i;
-        memory[1] = first_register + i;
-        clock_gettime(CLOCK_MONOTONIC,&end);
-        //pthread_mutex_unlock(&mutlock);
-        //pthread_spin_unlock(&splock);
-
-        if(start.tv_sec == end.tv_sec)
-        {
-        timeNanoSec = (end.tv_nsec - start.tv_nsec);
-        }
-        else
-        {
-            timeNanoSec = (end.tv_nsec - start.tv_nsec + 1000000000);
-        }
-
-        if (timeNanoSec>maxWrite){
-        maxWrite = timeNanoSec;
-        }
-
-        if (timeNanoSec<minWrite){
-        minWrite = timeNanoSec;
-        }
-
-        //writeTimes[i] = timeNanoSec;
-
-        writeTimesTotal = writeTimesTotal + timeNanoSec;
-        //printf("%d\n", i);
+     
 
 
     }
 
-    //write anomaly investigation program
     double avgRead = readTimesTotal/(i+1);
-    double avgWrite = writeTimesTotal/(i+1);
+
 
     printf( "Min,Mean,Max for read : %.1lf %.1lf %.1lf nanoseconds\n", minRead, avgRead, maxRead );
-    printf( "Min,Mean,Max for write : %.1lf %.1lf %.1lf nanoseconds\n", minWrite, avgWrite, maxWrite);
-
-    //pthread_mutex_unlock(&mutlock);
-    //pthread_mutex_destroy(&mutlock);
-    //pthread_spin_unlock(&splock);
-    //pthread_spin_destroy(&splock);
-
+    
+   
     FILE *fp;
     fp=fopen("output.txt","w+");
     for(i=0;i<repeats;i++)
