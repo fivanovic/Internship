@@ -20,6 +20,17 @@
 
 int main ()
 {
+
+    pthread_spinlock_t splock;
+    pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
+    //pthread_spin_lock(&splock);
+
+    pthread_mutex_t mutlock;
+    pthread_mutex_init(&mutlock, NULL);
+
+    //pthread_mutex_lock(&mutlock);
+
+
     FILE * reslist;
 
     reslist = fopen("/sys/bus/pci/devices/0000:01:00.0/resource", "r");
@@ -53,6 +64,8 @@ int main ()
     double readWriteTimes[repeats];
     //double wTimes[repeats];
 
+    pthread_spin_lock(&splock);
+    pthread_mutex_lock(&mutlock);
     for (i=0; i<repeats; i++)
     {
         struct timespec start,end;
@@ -100,6 +113,13 @@ int main ()
 
 
     }
+    pthread_mutex_unlock(&mutlock);
+    pthread_spin_unlock(&splock);
+    //pthread_mutex_unlock(&mutlock);
+    pthread_mutex_destroy(&mutlock);
+    //pthread_spin_unlock(&splock);
+    pthread_spin_destroy(&splock);
+
 
     double avgReadWrite = readWriteTimesTotal/(i+1);
 
