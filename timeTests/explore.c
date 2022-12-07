@@ -74,7 +74,7 @@ int main ()
     volatile void *newData[64];
 
     uint32_t x[64];
-    memcpy(newData,base_address,64*sizeof(uint32_t));
+    memcpy(newData,(void *)fd,64*sizeof(uint32_t));
     uint32_t* castData = (uint32_t*)newData;
     printf("data here %d\n",castData[1]);
     printf("data here %d\n",castData[2]);
