@@ -140,7 +140,7 @@
 	<unistd.h>
 	<pthread.h>
 
-1670402705 source:/home/filipivanovic/Documents/Internship/timeTests/explore.c
+1670407822 source:/home/filipivanovic/Documents/Internship/timeTests/explore.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>
@@ -157,4 +157,8 @@
 	<stdbool.h>
 	<unistd.h>
 	<pthread.h>
+	<linux/kernel.h>
+	<linux/module.h>
+	<linux/pci.h>
+	<sys/io.h>
 

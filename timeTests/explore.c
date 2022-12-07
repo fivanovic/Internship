@@ -15,6 +15,12 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <linux/kernel.h>
+#include <linux/module.h>
+#include <linux/pci.h>
+
+#include <sys/io.h>
+
 
 #define BILLION  1000000000L;
 
@@ -42,7 +48,7 @@ int main ()
     long secondval = strtol(sizeCoef, NULL, 16);
 
     long sizeval = (secondval - firstval)+1;
-    /*
+
     int fd = open("/sys/bus/pci/devices/0000:01:00.0/resource0", O_RDWR | O_SYNC);
     void* base_address = (void*)Memloc;
     size_t size = sizeval; // 1MiB
@@ -53,8 +59,8 @@ int main ()
                          fd,
                          0);
     uint16_t* memory = (uint16_t*)void_memory;
-    */
-    
+
+
     double readWriteTimesTotal;
     int i;
     double minReadWrite, maxReadWrite;
@@ -64,16 +70,18 @@ int main ()
     int repeats = 1000000;
 
     double readWriteTimes[repeats];
-    FILE * ftest;
-    ftest = fopen("/sys/bus/pci/devices/0000:01:00.0/resource0", "w+");
 
-    int testArray[64];
-    testArray[5] = 42;
-    memcpy(ftest,testArray,64*sizeof(int));
-    int testArray2[64];
-    memcpy(testArray2,ftest,64*sizeof(int));
-    printf("better work bitch %d", testArray2[5]);
-  
+    int test[256];
+    int test2[256];
+    test[2] = 2;
+    memcpy(memory,test,16*sizeof(int));
+    memcpy(test2,memory,64*sizeof(int));
+    printf("please work %d",test2[2]);
+
+
+
+
+
   /*
     for (i=0; i<repeats; i++)
     {
