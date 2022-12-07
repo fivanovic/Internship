@@ -42,7 +42,7 @@ int main ()
     long secondval = strtol(sizeCoef, NULL, 16);
 
     long sizeval = (secondval - firstval)+1;
-
+    /*
     int fd = open("/sys/bus/pci/devices/0000:01:00.0/resource0", O_RDWR | O_SYNC);
     void* base_address = (void*)Memloc;
     size_t size = sizeval; // 1MiB
@@ -53,7 +53,7 @@ int main ()
                          fd,
                          0);
     uint16_t* memory = (uint16_t*)void_memory;
-
+    */
     
     double readWriteTimesTotal;
     int i;
@@ -64,14 +64,17 @@ int main ()
     int repeats = 1000000;
 
     double readWriteTimes[repeats];
+    FILE * ftest;
+    ftest = fopen("/sys/bus/pci/devices/0000:01:00.0/resource0", "w+");
 
     int testArray[64];
     testArray[5] = 42;
-    memcpy(base_address,testArray,64*sizeof(int));
+    memcpy(ftest,testArray,64*sizeof(int));
     int testArray2[64];
-    memcpy(testArray2,base_address,64*sizeof(int));
+    memcpy(testArray2,ftest,64*sizeof(int));
     printf("better work bitch %d", testArray2[5]);
   
+  /*
     for (i=0; i<repeats; i++)
     {
         struct timespec start,end;
@@ -107,15 +110,6 @@ int main ()
 
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
 
-        /*
-        struct timespec rqtp, rmtp  = {0,10000};
-
-        nanosleep(&rqtp,&rmtp);
-
-        */
-
-
-
     }
 
     double avgReadWrite = readWriteTimesTotal/(i+1);
@@ -131,6 +125,7 @@ int main ()
         fprintf(fp,"%.1lf\n", readWriteTimes[i]);
     }
     fclose(fp);
+    */
 
     return(0);
 
