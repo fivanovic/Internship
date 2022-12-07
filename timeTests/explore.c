@@ -50,7 +50,7 @@ int main ()
     long sizeval = (secondval - firstval)+1;
 
     int fd = open("/sys/bus/pci/devices/0000:01:00.0/resource0", O_RDWR | O_SYNC);
-    void* base_address = (void*)Memloc;
+    void* base_address = (void*)0x8fa00000;//(void*)Memloc;
     size_t size = sizeval; // 1MiB
     void* void_memory = mmap(base_address,
                          size,
@@ -74,7 +74,7 @@ int main ()
     volatile void *newData[64];
 
     uint32_t x[64];
-    memcpy(newData,(void *)fd,64*sizeof(uint32_t));
+    memcpy(newData,base_address,64*sizeof(uint32_t));
     uint32_t* castData = (uint32_t*)newData;
     printf("data here %d\n",castData[1]);
     printf("data here %d\n",castData[2]);
