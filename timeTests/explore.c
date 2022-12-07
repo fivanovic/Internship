@@ -74,7 +74,7 @@ int main ()
     volatile void *newData;
 
     uint32_t x;
-    memcpy(newData,(volatile const void*)void_memory,sizeof x);
+    memcpy(newData,base_address,sizeof x);
     uint32_t* castData = (uint32_t*)newData;
     printf("data here %d",castData);
 
