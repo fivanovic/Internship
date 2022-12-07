@@ -71,10 +71,10 @@ int main ()
 
     double readWriteTimes[repeats];
 
-    void *newData;
+    volatile void *newData;
 
     uint32_t x;
-    memcpy(newData,(const void*)void_memory,sizeof x);
+    memcpy(newData,(volatile const void*)void_memory,sizeof x);
     uint32_t* castData = (uint32_t*)newData;
     printf("data here %d",castData);
 
