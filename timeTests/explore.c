@@ -77,6 +77,7 @@ int main ()
     memcpy(newData,base_address,64*sizeof(uint32_t));
     uint32_t* castData = (uint32_t*)newData;
     printf("data here %d",castData[1]);
+    printf("data here %d",castData[2]);
 
 
 
