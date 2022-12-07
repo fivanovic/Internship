@@ -19,7 +19,7 @@
 #include <linux/module.h>
 #include <linux/pci.h>
 
-#include <sys/io.h>
+#include <sys/uio.h>
 
 
 #define BILLION  1000000000L;
@@ -71,12 +71,13 @@ int main ()
 
     double readWriteTimes[repeats];
 
-    int test[256];
-    int test2[256];
-    test[2] = 2;
-    memcpy(memory,test,256*sizeof(int));
-    memcpy(test2,memory,256*sizeof(int));
-    printf("please work %d",test2[2]);
+    void *newData;
+
+    uint32_t x;
+    memcpy(newData,void_memory,sizeof x);
+    uint32_t* castData = (uint32_t*)newData;
+    printf("data here %d",castData);
+
 
 
 
