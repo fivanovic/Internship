@@ -69,7 +69,7 @@
 	<unistd.h>
 	<pthread.h>
 
-1670246714 source:/home/filipivanovic/Documents/Internship/timeTests/main.c
+1670416302 source:/home/filipivanovic/Documents/Internship/timeTests/main.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>
@@ -140,7 +140,7 @@
 	<unistd.h>
 	<pthread.h>
 
-1670414445 source:/home/filipivanovic/Documents/Internship/timeTests/explore.c
+1670416564 source:/home/filipivanovic/Documents/Internship/timeTests/explore.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>
