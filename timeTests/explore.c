@@ -53,6 +53,8 @@ int main ()
                          fd,
                          0);
     uint16_t* memory = (uint16_t*)void_memory;
+
+    
     double readWriteTimesTotal;
     int i;
     double minReadWrite, maxReadWrite;
@@ -62,10 +64,14 @@ int main ()
     int repeats = 1000000;
 
     double readWriteTimes[repeats];
-    //double wTimes[repeats];
 
-    //pthread_spin_lock(&splock);
-    //pthread_mutex_lock(&mutlock);
+    int testArray[64];
+    testArray[5] = 42;
+    memcpy(base_address,testArray,64*sizeof(int));
+    int testArray2[64];
+    memcpy(testArray2,base_address,64*sizeof(int));
+    printf("better work bitch %d", testArray2[5]);
+  
     for (i=0; i<repeats; i++)
     {
         struct timespec start,end;
@@ -97,8 +103,6 @@ int main ()
         minReadWrite = timeNanoSec;
         }
 
-        //usleep(5);
-
         readWriteTimes[i] = timeNanoSec;
 
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
@@ -113,13 +117,6 @@ int main ()
 
 
     }
-    //pthread_mutex_unlock(&mutlock);
-    //pthread_spin_unlock(&splock);
-    //pthread_mutex_unlock(&mutlock);
-    //pthread_mutex_destroy(&mutlock);
-    //pthread_spin_unlock(&splock);
-    //pthread_spin_destroy(&splock);
-
 
     double avgReadWrite = readWriteTimesTotal/(i+1);
 
