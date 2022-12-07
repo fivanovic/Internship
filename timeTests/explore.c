@@ -76,10 +76,11 @@ int main ()
     uint32_t x[64];
     memcpy(newData,base_address,64*sizeof(uint32_t));
     uint32_t* castData = (uint32_t*)newData;
-    printf("data here %d",castData[1]);
-    printf("data here %d",castData[2]);
-
-
+    printf("data here %d\n",castData[1]);
+    printf("data here %d\n",castData[2]);
+    memory[1] = first_register + 1;
+    printf("data here %d\n",castData[1]);
+    printf("data here %d\n",castData[2]);
 
 
 
