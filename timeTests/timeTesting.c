@@ -18,7 +18,7 @@
 
 #define BILLION  1000000000L;
 
-int main ()
+int main5455 ()
 {
     //pthread_spinlock_t splock;
     //pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
@@ -106,9 +106,7 @@ int main ()
 
         readTimesTotal = readTimesTotal + timeNanoSec;
 
-         struct timespec rqtp, rmtp  = {0,500};
 
-        nanosleep(&rqtp,&rmtp);
 
 
         //pthread_spin_lock(&splock);

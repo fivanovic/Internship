@@ -24,14 +24,14 @@
 
 #define BILLION  1000000000L;
 
-int main5865 ()
+int main ()
 {
     int numnum = 0;
     while(1)
     {
         numnum = numnum + 1;
         printf("new number for you boss %d", numnum);
-        usleep(1);
+        usleep(100);
     }
 
 
