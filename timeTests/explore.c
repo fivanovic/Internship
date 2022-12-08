@@ -71,16 +71,16 @@ int main ()
 
     double readWriteTimes[repeats];
 
-    volatile void *newData[64];
+    volatile void *newData;
 
-    uint32_t x[64];
-    memcpy(newData,void_memory,64*sizeof(uint32_t));
+    uint32_t x;
+    memcpy(newData,void_memory,sizeof(uint32_t));
     uint32_t* castData = (uint32_t*)newData;
-    printf("data here %d\n",castData[1]);
-    printf("data here %d\n",castData[2]);
+    printf("data here %d\n",castData);
+    printf("data here %d\n",castData);
     memory[1] = first_register + 1;
-    printf("data here %d\n",castData[1]);
-    printf("data here %d\n",castData[2]);
+    printf("data here %d\n",castData);
+    printf("data here %d\n",castData;
 
 
 
