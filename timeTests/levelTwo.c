@@ -107,7 +107,8 @@ int main ()
 
           if(levelTwoRes[j] < 0)
           {
-            levelTwoRes[j] = levelTwoRes[j] + 1000000000;
+            //levelTwoRes[j] = levelTwoRes[j] + 1000000000;
+            levelTwoRes[j] = levelTwoRes[j];
           }
 
           flag1 = temp;
