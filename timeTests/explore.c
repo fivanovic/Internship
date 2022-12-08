@@ -73,10 +73,11 @@ int main ()
     void *device;
     device = &void_memory[1];
     void *newData;
-
+    uint16_t castData;
+    newData = &castData;
     uint16_t x;
     memcpy(newData,device,sizeof(uint16_t));
-    uint16_t* castData = (uint16_t*)newData;
+
     printf("data here %d\n",castData);
     printf("data here %d\n",castData);
     memory[1] = first_register + 1;
