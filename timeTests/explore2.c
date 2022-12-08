@@ -43,7 +43,7 @@ int main75 ()
     void* base_address = (void*)Memloc;
     size_t size = sizeval; // 1MiB
     void* void_memory = mmap(base_address,
-                         sizeval,
+                         size,
                          PROT_READ | PROT_WRITE,
                          MAP_SHARED | MAP_FIXED,
                          fd,
