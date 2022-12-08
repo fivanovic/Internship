@@ -62,18 +62,18 @@ int main ()
     double readWriteTimes[repeats];
 
 
-  
+
     for (i=0; i<repeats; i++)
     {
         struct timespec start,end;
 
-       
+
         clock_gettime(CLOCK_MONOTONIC,&start);
         //uint16_t first_register = memory[i%(1024*1024/4)];
-        memory[1] = 65535;
+        memory[1] = 65534;
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
-        memory[1] = 65535;
+        memory[1] = 0;
         double timeNanoSec;
 
         if(start.tv_sec == end.tv_sec)
@@ -113,7 +113,7 @@ int main ()
         fprintf(fp,"%.1lf\n", readWriteTimes[i]);
     }
     fclose(fp);
-    
+
 
     return(0);
 
