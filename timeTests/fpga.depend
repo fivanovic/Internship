@@ -86,7 +86,7 @@
 	<stdbool.h>
 	<unistd.h>
 
-1670504286 source:/home/filipivanovic/Documents/Internship/timeTests/timeTesting.c
+1670504416 source:/home/filipivanovic/Documents/Internship/timeTests/timeTesting.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>
@@ -184,7 +184,7 @@
 	<linux/pci.h>
 	<sys/uio.h>
 
-1670504286 source:/home/filipivanovic/Documents/Internship/timeTests/caveman.c
+1670504408 source:/home/filipivanovic/Documents/Internship/timeTests/caveman.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>
