@@ -106,16 +106,16 @@ int main ()
 
         readTimesTotal = readTimesTotal + timeNanoSec;
 
-         struct timespec rqtp, rmtp  = {0,500};
+        //struct timespec rqtp, rmtp  = {0,500};
 
-        nanosleep(&rqtp,&rmtp);
+        //nanosleep(&rqtp,&rmtp);
 
 
         //pthread_spin_lock(&splock);
         //pthread_mutex_lock(&mutlock);
         clock_gettime(CLOCK_MONOTONIC,&start);
         //memory[i%(1024*1024/4)] = first_register + i;
-        memory[1] = first_register + i;
+        memory[1] = 65500;
         clock_gettime(CLOCK_MONOTONIC,&end);
         //pthread_mutex_unlock(&mutlock);
         //pthread_spin_unlock(&splock);
