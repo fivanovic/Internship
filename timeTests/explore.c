@@ -70,8 +70,8 @@ int main ()
     int repeats = 1000000;
 
     double readWriteTimes[repeats];
-    void *device; 
-    test = &void_memory[1];
+    void *device;
+    device = &void_memory[1];
     void *newData;
 
     uint8_t x;
