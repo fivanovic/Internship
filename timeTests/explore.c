@@ -81,7 +81,7 @@ int main ()
     printf("data here %d\n",castData);
     memory[1] = first_register + 1;
     printf("data here %d\n",castData);
-    printf("data here %d\n",castData;
+    printf("data here %d\n",castData);
 
 
 
