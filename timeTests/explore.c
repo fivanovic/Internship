@@ -74,9 +74,9 @@ int main ()
     device = &void_memory[1];
     void *newData;
 
-    uint8_t x;
-    memcpy(newData,device,sizeof(uint8_t));
-    uint8_t* castData = (uint8_t*)newData;
+    uint16_t x;
+    memcpy(newData,device,sizeof(uint16_t));
+    uint16_t* castData = (uint16_t*)newData;
     printf("data here %d\n",castData);
     printf("data here %d\n",castData);
     memory[1] = first_register + 1;
