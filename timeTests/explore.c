@@ -76,7 +76,7 @@ int main ()
     uint32_t castData;
     newData = &castData;
     uint32_t x;
-    memcpy(newData,void_memory,32);
+    memcpy(newData,device,32);
 
     printf("data here %d\n",castData);
     printf("data here %d\n",castData);
