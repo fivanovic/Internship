@@ -53,7 +53,7 @@ int main ()
     void* base_address = (void*)Memloc;
     size_t size = sizeval; // 1MiB
     void* void_memory = mmap(base_address,
-                         size,
+                         100,
                          PROT_READ | PROT_WRITE,
                          MAP_SHARED | MAP_FIXED,
                          fd,
@@ -71,16 +71,16 @@ int main ()
 
     double readWriteTimes[repeats];
     void *device;
-    device = &void_memory[1];
+    device = &void_memory[0];
     void *newData;
-    uint16_t castData;
+    uint32_t castData;
     newData = &castData;
-    uint16_t x;
-    memcpy(newData,device,sizeof(uint16_t));
+    uint32_t x;
+    memcpy(newData,void_memory,32);
 
     printf("data here %d\n",castData);
     printf("data here %d\n",castData);
-    memory[1] = first_register + 1;
+
     printf("data here %d\n",castData);
     printf("data here %d\n",castData);
 
