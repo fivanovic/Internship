@@ -70,12 +70,12 @@ int main ()
     int repeats = 1000000;
 
     double readWriteTimes[repeats];
-    //void *device; 
-    //device = &void_memory[1];
+    void *device;
+    device = &void_memory[1];
     void *newData;
 
     uint8_t x;
-    memcpy(newData,void_memory[1],sizeof(uint8_t));
+    memcpy(newData,device,sizeof(uint8_t));
     uint8_t* castData = (uint8_t*)newData;
     printf("data here %d\n",castData);
     printf("data here %d\n",castData);
