@@ -55,7 +55,7 @@ int main ()
     void* void_memory = mmap(base_address,
                          size,
                          PROT_READ | PROT_WRITE,
-                         MAP_SHARED,
+                         MAP_SHARED, MAP_FIXED,
                          fd,
                          0);
     uint16_t* memory = (uint16_t*)void_memory;
