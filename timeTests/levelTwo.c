@@ -19,7 +19,7 @@
 #define BILLION  1000000000L;
 
 
-int main584 ()
+int main ()
 {
 
     FILE * reslist;
@@ -102,14 +102,14 @@ int main584 ()
           double temp = levTwo.tv_nsec; //+ (levTwo.tv_nsec/1000000000);
           //levelTwoRes[j] = i - levelTwoRes[j-1];
 
-          
+
           levelTwoRes[j] = temp - flag1;
 
           if(levelTwoRes[j] < 0)
           {
             levelTwoRes[j] = levelTwoRes[j] + 1000000000;
           }
-          
+
           flag1 = temp;
           j = j+1;
 
