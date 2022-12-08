@@ -24,7 +24,7 @@
 
 #define BILLION  1000000000L;
 
-int main ()
+int main6848 ()
 {
     int numnum = 0;
     while(1)

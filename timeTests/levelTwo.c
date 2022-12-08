@@ -19,7 +19,7 @@
 #define BILLION  1000000000L;
 
 
-int main546663 ()
+int main ()
 {
 
     FILE * reslist;
