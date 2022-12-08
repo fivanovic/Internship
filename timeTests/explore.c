@@ -70,12 +70,13 @@ int main ()
     int repeats = 1000000;
 
     double readWriteTimes[repeats];
+    void *test; 
+    test = &memory[1];
+    void *newData;
 
-    volatile void *newData;
-
-    uint32_t x;
-    memcpy(newData,void_memory,sizeof(uint32_t));
-    uint32_t* castData = (uint32_t*)newData;
+    uint8_t x;
+    memcpy(newData,test,sizeof(uint8_t));
+    uint8_t* castData = (uint8_t*)newData;
     printf("data here %d\n",castData);
     printf("data here %d\n",castData);
     memory[1] = first_register + 1;
