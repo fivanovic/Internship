@@ -60,7 +60,8 @@ int main ()
 
     //double wTimes[repeats];
     int j = 1;
-    double flag1 = 0;
+    double flagnsec = 0;
+    double flagsec = 0;
     for (i=0; i<repeats; i++)
     {
         struct timespec start,end,levTwo;
@@ -99,10 +100,23 @@ int main ()
         if(timeNanoSec > 1400 && timeNanoSec < 2500)
         {
           clock_gettime(CLOCK_MONOTONIC,&levTwo);
-          double temp = levTwo.tv_nsec; //+ (levTwo.tv_nsec/1000000000);
+          double tempnsec = levTwo.tv_nsec; //+ (levTwo.tv_nsec/1000000000);
+          double tempsec = levTwo.tv_sec;
           //levelTwoRes[j] = i - levelTwoRes[j-1];
+          if(tempsec == flagsec)
+        {
+            levelTwoRes[j] = tempnsec - flagnsec;
+        }
+        else
+        {
+            levelTwoRes[j] = (tempnsec - flagnsec) + (tempsec - flagsec) * 1000000000;
 
-
+        }
+        flagsec = tempsec;
+        flagnsec = tempnsec;
+        j = j + 1;
+          /*
+          if
           levelTwoRes[j] = temp - flag1;
 
           if(levelTwoRes[j] < 0)
@@ -113,7 +127,7 @@ int main ()
 
           flag1 = temp;
           j = j+1;
-
+            */
         }
 
         clock_gettime(CLOCK_MONOTONIC,&start);
