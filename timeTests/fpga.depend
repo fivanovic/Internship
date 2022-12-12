@@ -86,7 +86,7 @@
 	<stdbool.h>
 	<unistd.h>
 
-1670508202 source:/home/filipivanovic/Documents/Internship/timeTests/timeTesting.c
+1670834834 source:/home/filipivanovic/Documents/Internship/timeTests/timeTesting.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>
@@ -104,7 +104,7 @@
 	<unistd.h>
 	<pthread.h>
 
-1670510365 source:/home/filipivanovic/Documents/Internship/timeTests/levelTwo.c
+1670834839 source:/home/filipivanovic/Documents/Internship/timeTests/levelTwo.c
 	<stdio.h>
 	<stdint.h>
 	<string.h>
