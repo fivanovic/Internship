@@ -18,7 +18,7 @@
 
 #define BILLION  1000000000L;
 
-int main5464 ()
+int main ()
 {
     //pthread_spinlock_t splock;
     //pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
