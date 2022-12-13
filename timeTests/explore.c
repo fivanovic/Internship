@@ -26,6 +26,8 @@
 
 int main ()
 {
+    pthread_spinlock_t splock;
+    pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
     FILE * reslist;
 
     reslist = fopen("/sys/bus/pci/devices/0000:01:00.0/resource", "r");
@@ -66,10 +68,10 @@ int main ()
 
         //first_register = 1;
         clock_gettime(CLOCK_MONOTONIC,&start);
-        memory[1] = 257;//first_register + 1;
+        memory[1] = 513;//first_register + 1;
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
-
+        memory[1] = 0;
         double timeNanoSec;
 
         if(start.tv_sec == end.tv_sec)
@@ -93,8 +95,13 @@ int main ()
         readWriteTimes[i] = timeNanoSec;
 
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
+
+        pthread_spin_lock(&splock);
         usleep(50);
+        pthread_spin_unlock(&splock);
     }
+
+    pthread_spin_destroy(&splock);
 
     double avgReadWrite = readWriteTimesTotal/(i+1);
 
