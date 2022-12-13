@@ -24,19 +24,8 @@
 
 #define BILLION  1000000000L;
 
-int main4557 ()
+int main ()
 {
-
-    //pthread_spinlock_t splock;
-    //pthread_spin_init(&splock, PTHREAD_PROCESS_PRIVATE);
-    //pthread_spin_lock(&splock);
-
-    //pthread_mutex_t mutlock;
-    //pthread_mutex_init(&mutlock, NULL);
-
-    //pthread_mutex_lock(&mutlock);
-
-
     FILE * reslist;
 
     reslist = fopen("/sys/bus/pci/devices/0000:01:00.0/resource", "r");
@@ -53,7 +42,7 @@ int main4557 ()
     void* base_address = (void*)Memloc;
     size_t size = sizeval; // 1MiB
     void* void_memory = mmap(base_address,
-                         32,
+                         size,
                          PROT_READ | PROT_WRITE,
                          MAP_SHARED | MAP_FIXED,
                          fd,
@@ -70,32 +59,14 @@ int main4557 ()
     int repeats = 1000000;
 
     double readWriteTimes[repeats];
-    void *device;
-    device = &void_memory[0];
-    void *newData;
-    uint32_t castData;
-    newData = &castData;
-    uint32_t x;
-    memcpy(newData,device,32);
 
-    printf("data here %d\n",castData);
-    printf("data here %d\n",castData);
-
-    printf("data here %d\n",castData);
-    printf("data here %d\n",castData);
-
-
-
-
-  /*
     for (i=0; i<repeats; i++)
     {
         struct timespec start,end;
 
         //first_register = 1;
         clock_gettime(CLOCK_MONOTONIC,&start);
-        //uint16_t first_register = memory[i%(1024*1024/4)];
-        memory[1] = first_register + 1;
+        memory[1] = 65500;//first_register + 1;
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
 
@@ -122,7 +93,7 @@ int main4557 ()
         readWriteTimes[i] = timeNanoSec;
 
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
-
+        usleep(50);
     }
 
     double avgReadWrite = readWriteTimesTotal/(i+1);
@@ -138,7 +109,7 @@ int main4557 ()
         fprintf(fp,"%.1lf\n", readWriteTimes[i]);
     }
     fclose(fp);
-    */
+
 
     return(0);
 
