@@ -96,9 +96,9 @@ int main ()
 
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
 
-        pthread_spin_lock(&splock);
+        //pthread_spin_lock(&splock);
         usleep(50);
-        pthread_spin_unlock(&splock);
+        //pthread_spin_unlock(&splock);
     }
 
     pthread_spin_destroy(&splock);
