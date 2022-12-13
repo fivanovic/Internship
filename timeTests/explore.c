@@ -67,8 +67,8 @@ int main ()
         struct timespec start,end;
 
         //first_register = 1;
-        memory[1] = 1024;//first_register + 1;
         clock_gettime(CLOCK_MONOTONIC,&start);
+        memory[1] = 1024;//first_register + 1;
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
         memory[1] = 0;
@@ -97,7 +97,7 @@ int main ()
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
 
         //pthread_spin_lock(&splock);
-        usleep(50);
+        //usleep(50);
         //pthread_spin_unlock(&splock);
     }
 
