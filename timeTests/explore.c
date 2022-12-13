@@ -67,8 +67,8 @@ int main ()
         struct timespec start,end;
 
         //first_register = 1;
-        clock_gettime(CLOCK_MONOTONIC,&start);
         memory[1] = 1024;//first_register + 1;
+        clock_gettime(CLOCK_MONOTONIC,&start);
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
         memory[1] = 0;
