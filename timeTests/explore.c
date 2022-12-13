@@ -68,7 +68,7 @@ int main ()
 
         //first_register = 1;
         clock_gettime(CLOCK_MONOTONIC,&start);
-        memory[1] = 513;//first_register + 1;
+        memory[1] = 1024;//first_register + 1;
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
         memory[1] = 0;
