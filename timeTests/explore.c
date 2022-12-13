@@ -44,7 +44,7 @@ int main ()
     void* void_memory = mmap(base_address,
                          size,
                          PROT_READ | PROT_WRITE,
-                         MAP_SHARED | MAP_FIXED,
+                         MAP_SHARED,
                          fd,
                          0);
     uint16_t* memory = (uint16_t*)void_memory;
@@ -66,7 +66,7 @@ int main ()
 
         //first_register = 1;
         clock_gettime(CLOCK_MONOTONIC,&start);
-        memory[1] = 65500;//first_register + 1;
+        memory[1] = 257;//first_register + 1;
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
 
