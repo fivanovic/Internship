@@ -68,10 +68,10 @@ int main ()
 
         //first_register = 1;
         clock_gettime(CLOCK_MONOTONIC,&start);
-        memory[1] = 1024;//first_register + 1;
+        memory[1] = first_register + 1;
         first_register = memory[1];
         clock_gettime(CLOCK_MONOTONIC,&end);
-        memory[1] = 0;
+        //memory[1] = 0;
         double timeNanoSec;
 
         if(start.tv_sec == end.tv_sec)
@@ -97,7 +97,7 @@ int main ()
         readWriteTimesTotal = readWriteTimesTotal + timeNanoSec;
 
         //pthread_spin_lock(&splock);
-        usleep(100);
+        usleep(50);
         //pthread_spin_unlock(&splock);
     }
 
