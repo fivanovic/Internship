@@ -58,7 +58,7 @@ int main ()
     minReadWrite = 10000.0;
     maxReadWrite = 0.0;
     uint16_t first_register,second_register,third_register = 0;
-    int repeats = 1000000;
+    int repeats = 100000;
 
     double readWriteTimes[repeats];
 
